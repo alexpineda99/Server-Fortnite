@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
-const _sign = { algorithm: 'RS256'};
-
+const _sign = "wSR85tGXgE2gdhEndMaFTIS7u16JTcQk";
+const algorithm = { algorithm: 'HS256'};
+// { algorithm: 'ES512'}
 exports.verifyToken = async function (token) {
 
     try {
@@ -20,7 +21,7 @@ exports.signToken = function(data) {
 
         try {
 
-            const token = jwt.sign(data, _sign, { expiresIn: '1h' });
+            const token = jwt.sign(data, _sign, { expiresIn: '1h' }, algorithm);
             resolve(token)
 
         } catch(err) {
