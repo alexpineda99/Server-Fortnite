@@ -1,11 +1,10 @@
 const express = require("express");
-const axios = require("axios");
 const app = express();
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json({"limit":"1mb"}));
 app.disable('x-powered-by');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 //Routes
 const register = require('./src/routes/register');
@@ -22,9 +21,9 @@ app.all('*', function(_, res, next){
 app.post("/register", register.dataValid, register.registerUser);
 app.post("/login", login.dataValid, login.loginUser);
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-  });
+// app.get("/api", (req, res) => {
+//     res.json({ message: "Hello from server!" });
+//   });
 
   app.get("/challenges", challenges.challenges);
 

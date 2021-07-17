@@ -56,6 +56,10 @@ module.exports.registerUser = function (req, res) {
     register.register(name, country, region, phone, email, password)
     .then(data=> {
         console.log(data);
+        res.send({
+            success: true,
+            msg: "User registered"
+        })
     })
     .catch(err => {
         console.log(err);
