@@ -11,8 +11,8 @@ exports.login = function(email, password) {
             }
             else if(result.length == 0) {
 
-                console.log("Usuario inexistente");
-                return reject("Usuario inexistente");
+                // console.log("Wrong User or password.");
+                return reject("Wrong User or password.");
 
             } else {
 
