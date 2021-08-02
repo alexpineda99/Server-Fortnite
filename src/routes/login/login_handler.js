@@ -51,6 +51,7 @@ module.exports.loginUser = function (req, res) {
                     success: true,
                     token: token
                 })
+                // localStorage.setItem("user", "Alex"); --- throw error
             })
             .catch(err => {
                 res.send({

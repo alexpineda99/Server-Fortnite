@@ -9,7 +9,7 @@ exports.login = function(email, password) {
                 console.log("Error en el login ", error.stack);
                 return reject("Error en login");
             }
-            else if(result.length == 0) {
+            else if(result.length === 0) {
 
                 // console.log("Wrong User or password.");
                 return reject("Wrong User or password.");
