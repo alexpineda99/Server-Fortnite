@@ -3,9 +3,9 @@ exports.Itemparams = function (req, res, next) {
     
     const id = req.params.id;
     res.send({
-        msg: `este es la url ${id}`
+        msg: `this is the url ${id}`
     })
-    console.log("bien! toma la url de item " + id);
+    console.log("great! take the url item " + id);
 
     next();
 
