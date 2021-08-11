@@ -3,6 +3,10 @@ const register = require("./register");
 module.exports.dataValid = function (req, res, next) {
     const {name, country, region, phone, email, password} = req.body;
 
+    let regLetter = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ]*$/i; // regular expression only letters
+    let regPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,16}$/; // regular expression password
+    let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/; // regular expression email
+
     if (!name) {
         return res.send({
             success: false,
@@ -42,6 +46,13 @@ module.exports.dataValid = function (req, res, next) {
         return res.send({
             success: false,
             msg: "Password field is required"
+        })
+    }
+
+    if (!regLetter.test(name)) {
+        return res.send({
+            success: false,
+            msg: "Name field requires only letters"
         })
     }
 
