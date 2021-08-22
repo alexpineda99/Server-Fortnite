@@ -5,13 +5,13 @@ exports.authHeader = function(req, res, next) {
     const token = req.headers['auth'];
     
     if (token == "null" || token === undefined) {
-        console.log("No header..." + "Mira el token " + token);
+        console.log("Token not defined");
         return res.status(401).send({
             msg: "Not authorizated",
         });
         
     }
-    console.log("U got a auth ");
+    console.log("Yes for token");
     next();
 }
 

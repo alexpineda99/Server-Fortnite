@@ -12,7 +12,7 @@ const register = require('./src/routes/register');
 const login = require('./src/routes/login');
 const challenges = require('./src/routes/challenges');
 const item = require('./src/routes/Item');
-const emailsender = require('./src/email-server/email');
+const emailsender = require('./src/routes/email-server/email');
 
 app.all('*', function(_, res, next){
 	res.header('Access-Control-Allow-Origin', '*');
@@ -22,12 +22,16 @@ app.all('*', function(_, res, next){
 	next();
 });
 
-app.post("/register", register.dataValid, register.registerUser);
+app.post("/register", register.dataValid, register.registerUser, emailsender.sendEmail);
 app.post("/login", login.dataValid, login.loginUser);
 app.get("/challenges", middle.authHeader, middle.validSign, challenges.challenges);
 app.get("/item/:id", middle.authHeader, middle.validSign, item.Itemparams);
-app.get("/send", emailsender.sendEmail);
+app.get("/verify");
 
+
+//TEST ROUTES
+
+// app.get("/send", emailsender.sendEmail);
 // app.get("/api", (req, res) => {
 //     res.json({ message: "Hello from server!" });
 //   });

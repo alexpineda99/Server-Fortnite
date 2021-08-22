@@ -6,13 +6,13 @@ exports.login = function(email, password) {
         db.query("SELECT id, email, password FROM users WHERE email=? AND password=?", [email, password], (error, result)=> {
 
             if(error) {
-                console.log("Error en el login ", error.stack);
-                return reject("Error en login");
+                console.log("Error in login ", error.stack);
+                return reject(error);
             }
             else if(result.length === 0) {
 
                 // console.log("Wrong User or password.");
-                return reject("Wrong User or password.");
+                return resolve(undefined);
 
             } else {
 
@@ -25,4 +25,6 @@ exports.login = function(email, password) {
 
 
     })
+
+    
 }

@@ -33,11 +33,12 @@ module.exports.loginUser = function (req, res) {
     login.login(email, password)
     .then(data=> {
         // console.log(data);
-        if (data == undefined) {
+        if (data === undefined) {
             res.send({
                 success: false,
-                msg: "User doesn´t exist"
+                msg: "Wrong user or password."
             })
+            
         } else {
             const payload = {
                 'id': data.id,
@@ -55,14 +56,16 @@ module.exports.loginUser = function (req, res) {
             })
             .catch(err => {
                 res.send({
-                    success: false,
-                    msg: "Error login"
+                    msg: err
                 })
             })
         }
     })
     .catch(err => {
         console.log(err);
+        res.send({
+            msg: err
+        })
     })
 
 }

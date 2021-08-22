@@ -2,18 +2,38 @@ const db = require("../../config/connection");
 
 exports.register = function(name, country, region, phone, email, password) {
     return new Promise((resolve, reject)=> {
-        db.query('INSERT INTO users SET name=?, country=?, region=?, phone=?, email=?, password=?', [name, country, region, phone, email, password], (error, result) => {
+
+        
+
+        db.query("SELECT email, phone FROM users WHERE email=? OR phone=?", [email, phone], (error, result)=> {
+
+            if (result.length === 0) {
+
+        db.query('INSERT INTO users SET name=?, country=?, region=?, phone=?, email=?, password=?, verified=0', [name, country, region, phone, email, password], (error, result) => {
 
             if (error) {
                 console.log("Error en el registro ", error.stack);
-                return reject("Error en el registro");
+                return reject("Error in register. Try Again.");
             }
 
             resolve(result);
 
         })
+    } else if (result[0].email === email) {
+        return reject("Email already registered");
 
+    } else if (result[0].phone === phone) {
+        return reject("Number phone already registered");
+        
+    } else {
+        return reject("Error server");
+    }
+
+//    return reject(result[0].email);
 
     })
+})
+
+
 
 }
