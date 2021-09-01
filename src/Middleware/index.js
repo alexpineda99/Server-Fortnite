@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
 const _sign = "wSR85tGXgE2gdhEndMaFTIS7u16JTcQk";
 
+exports.verifyEmail = function () {
+    
+}
+
 exports.authHeader = function(req, res, next) {
     const token = req.headers['auth'];
     
