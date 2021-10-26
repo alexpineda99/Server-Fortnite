@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const _sign = "wSR85tGXgE2gdhEndMaFTIS7u16JTcQk";
+const keys = require('../config/keys');
+const _sign = keys.signs.sessionTokenSign;
 const algorithm = { algorithm: 'HS256'};
 // { algorithm: 'ES512'}
 exports.verifyToken = async function (token) {

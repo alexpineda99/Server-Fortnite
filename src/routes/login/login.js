@@ -11,19 +11,19 @@ exports.login = function(email, password) {
             }
             else if(result.length === 0) {
 
-                // console.log("Wrong User or password.");
+                console.log("Wrong User or password.");
                 return resolve(undefined);
 
             } else {
                 db.query(`SELECT users.id, users.email, users.password FROM users INNER JOIN user_verification 
-                ON users.id = user_verification.userid WHERE users.email=? AND users.password=? AND users.verified = 0`, [email, password], (error, result)=> {
+                ON users.id = user_verification.userid WHERE users.email=? AND users.password=? AND users.verified = 1`, [email, password], (error, result)=> {
 
-                if(result.length === 0) {
-                    console.log("Please, verify your email");
-                    return reject("Please, verify your email");
-                } else {
+                if(result.length === 1) {
                     console.log("*Inicio de sesión exitoso*", result[0]);
                     return resolve(result[0]);
+                } else {
+                    console.log("Please, verify your email");
+                    return reject("Please, verify your email");
                 }
             })
             }
