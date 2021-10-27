@@ -39,7 +39,7 @@ app.get("/verify/:id", verification.verifyinfo);
 //   });
 // app.get("/api", middle.authHeader);
 app.get("/test", (req, res) => {
-  console.log("gg test");
+  res.json({ message: "Hello from server!" });
   // res.status(301).redirect('http://localhost:3000/');
 });
 
