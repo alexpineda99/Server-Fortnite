@@ -27,7 +27,7 @@ app.post("/register", register.dataValid, register.registerUser, emailsender.sen
 app.post("/login", login.dataValid, login.loginUser);
 app.post("/verify", verification.verifyinfo);
 app.get("/challenges", middle.authHeader, middle.validSign, challenges.challenges);
-app.get("/item/:id", middle.authHeader, middle.validSign, item.Itemparams);
+// app.get("/item/:id", middle.authHeader, middle.validSign, item.Itemparams);
 app.get("/item/:id", item.Itemparams);
 app.get("/verify/:id", verification.verifyinfo);
 
