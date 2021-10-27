@@ -5,7 +5,7 @@ const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(express.json({"limit":"1mb"}));
 app.disable('x-powered-by');
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 //Routes
 const register = require('./src/routes/register');
