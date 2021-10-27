@@ -16,47 +16,47 @@ module.exports.dataValid = function (req, res, next) {
         })
     }
 
-    if (!country) {
-        return res.send({
-            success: false,
-            msg: "Country field is required"
-        })
-    }
+    // if (!country) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Country field is required"
+    //     })
+    // }
 
-    if (!region) {
-        return res.send({
-            success: false,
-            msg: "Region field is required"
-        })
-    }
+    // if (!region) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Region field is required"
+    //     })
+    // }
 
-    if (!phone) {
-        return res.send({
-            success: false,
-            msg: "Phone field is required"
-        })
-    }
+    // if (!phone) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Phone field is required"
+    //     })
+    // }
 
-    if (!email) {
-        return res.send({
-            success: false,
-            msg: "Email field is required"
-        })
-    }
+    // if (!email) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Email field is required"
+    //     })
+    // }
 
-    if (!password) {
-        return res.send({
-            success: false,
-            msg: "Password field is required"
-        })
-    }
+    // if (!password) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Password field is required"
+    //     })
+    // }
 
-    if (regLetter.test(name)) {
-        return res.send({
-            success: false,
-            msg: "Name field requires only letters"
-        })
-    }
+    // if (regLetter.test(name)) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Name field requires only letters"
+    //     })
+    // }
 
     next();
 }
