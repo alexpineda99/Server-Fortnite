@@ -1,6 +1,6 @@
 const db = require("../../config/connection");
 
-exports.register = function(name, country, region, phone, email, password) {
+exports.register = function(name, country, region, phone, email, password, data) {
     return new Promise((resolve, reject)=> {
 
         
@@ -15,8 +15,16 @@ exports.register = function(name, country, region, phone, email, password) {
                 console.log("Error en el registro ", error.stack);
                 return reject("Error in register. Try Again.");
             }
-
+            let userid = result.insertId;
             resolve(result);
+        db.query('INSERT INTO user_verification SET userid=?, token_verification=?', [userid, data], (error, result) => {
+            
+            if (error){
+                console.log("Error en el registro ", error.stack);
+                return reject("Error in register. Try Again.");
+            }
+            resolve(result);
+        })
 
         })
     } else if (result[0].email === email) {
@@ -28,8 +36,6 @@ exports.register = function(name, country, region, phone, email, password) {
     } else {
         return reject("Error server");
     }
-
-//    return reject(result[0].email);
 
     })
 })

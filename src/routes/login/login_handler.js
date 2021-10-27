@@ -56,6 +56,7 @@ module.exports.loginUser = function (req, res) {
             })
             .catch(err => {
                 res.send({
+                    success: false,
                     msg: err
                 })
             })
@@ -64,6 +65,7 @@ module.exports.loginUser = function (req, res) {
     .catch(err => {
         console.log(err);
         res.send({
+            success: false,
             msg: err
         })
     })
