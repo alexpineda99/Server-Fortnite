@@ -21,7 +21,7 @@ module.exports.sendEmail = function (req, res) {
             from: 'alex.fortine.app@gmail.com', // sender address
             to: email, // list of receivers
             subject: "Verify your Fortnite´s email", // Subject line
-            html: emailTemplate.verifytemplate("gggg"), // html body
+            html: emailTemplate.verifytemplate("Thanksforregistering"), // html body
           });
 
               res.send({
