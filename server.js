@@ -5,7 +5,7 @@ const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(express.json({"limit":"1mb"}));
 app.disable('x-powered-by');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 //Routes
 const register = require('./src/routes/register');
@@ -40,7 +40,7 @@ app.get("/verify/:id", verification.verifyinfo);
 // app.get("/api", middle.authHeader);
 app.get("/test", (req, res) => {
   console.log("gg test");
-  res.status(301).redirect('http://localhost:3000/');
+  // res.status(301).redirect('http://localhost:3000/');
 });
 
 
