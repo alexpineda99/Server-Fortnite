@@ -90,7 +90,19 @@ module.exports.registerUser = function (req, res) {
 
         } else {
         emailSender.sendEmail(email, hashed, name)
-
+        .then(data => {
+            if (data === null || data === undefined) {
+                res.send({
+                    success: false,
+                    msg: "Data no valid"
+                })
+            } else {
+                res.send({
+                    success: true,
+                    msg: "User succesfully registered and email sent"
+                })
+            }
+        })
         .catch(err => {
             console.log(err)
             res.send({
