@@ -8,7 +8,7 @@ app.disable('x-powered-by');
 const PORT = process.env.PORT || 3001;
 
 app.all('*', function(_, res, next){
-	res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
+	res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header("Access-Control-Allow-Credentials", "true");
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
 	res.header('Access-Control-Allow-Headers', 'Origin, content-type, auth, Content-Length, X-Requested-With');
