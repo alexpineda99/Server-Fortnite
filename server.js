@@ -5,7 +5,7 @@ const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(express.json({"limit":"1mb"}));
 app.disable('x-powered-by');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 app.all('*', function(_, res, next){
 	res.header('Access-Control-Allow-Origin', '*');
