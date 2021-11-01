@@ -2,19 +2,19 @@ const nodemailer = require("nodemailer");
 const transport = require("./config");
 const emailTemplate = require("../../Templates/verifyEmailTemplate");
 
-exports.sendEmail = function () {
-  return new Promise ((resolve, reject) => {
+exports.sendEmail = function (email, data, name) {
+  
 
   try {
   let transporter = nodemailer.createTransport(transport.infouser());
 
-    transporter.verify(async function(error, success) {
+    transporter.verify(function(error, success) {
         // send mail with defined transport object
-      let info = await transporter.sendMail({
+      let info = transporter.sendMail({
           from: 'alex.fortine.app@gmail.com', // sender address
-          to: "alexandropinedam1310@gmail.com", // list of receivers
+          to: email, // list of receivers
           subject: "Verify your Fortnite´s email", // Subject line
-          html: "<h1> hh </h1>", // html body
+          html: emailTemplate.verifytemplate(data, name), // html body
         });
 
     resolve(success)
@@ -23,15 +23,7 @@ exports.sendEmail = function () {
 
   } catch(error) {
     console.log(error);
-    return reject(error)
+    return error;
   }
-  })
+  
 }
-
-
-// {
-//   from: 'alex.fortine.app@gmail.com', // sender address
-//   to: "alexandropinedam1310@gmail.com", // list of receivers
-//   subject: "Verify your Fortnite´s email", // Subject line
-//   html: "<h1> hh </h1>", // html body
-// }

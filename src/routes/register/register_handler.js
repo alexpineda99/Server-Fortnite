@@ -91,7 +91,7 @@ module.exports.registerUser = function (req, res) {
         } 
         
         else {
-        emailSender.sendEmail()
+        emailSender.sendEmail(email, hashed, name)
         .then(data => {
             if (data === null || data === undefined) {
                 res.send({
