@@ -3,9 +3,7 @@ const transport = require("./config");
 const emailTemplate = require("../../Templates/verifyEmailTemplate");
 
 exports.sendEmail = function (email, data, name) {
-  return new Promise ((resolve, reject) => {
 
-  try {
   let transporter = nodemailer.createTransport(transport.infouser());
 
   let mailOptions = {
@@ -14,6 +12,17 @@ exports.sendEmail = function (email, data, name) {
     subject: "Verify your Fortnite´s email", // Subject line
     html: emailTemplate.verifytemplate(data, name), // html body
   }
+
+  transporter.verify(mailOptions, function(err, data) {
+
+    if (err) {
+      console.log("Error sending email: ", err)
+    } else {
+      console.log("Email verification sent successfully")
+    }
+
+
+  });
 
     // transporter.verify(async function(error, success) {
     //     // send mail with defined transport object
@@ -30,9 +39,7 @@ exports.sendEmail = function (email, data, name) {
 
   console.log("datos auth: " + transport.infouser())
 
-  } catch(error) {
     console.log(error);
     return reject(error)
-  }
-  })
+
 }
