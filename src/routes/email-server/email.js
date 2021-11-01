@@ -13,7 +13,7 @@ exports.sendEmail = function (email, data, name) {
     html: emailTemplate.verifytemplate(data, name), // html body
   }
 
-  transporter.sendEmail(mailOptions, function(err, data) {
+  transporter.verify(mailOptions, function(err, data) {
 
     if (err) {
       console.log("Error sending email: ", err)
