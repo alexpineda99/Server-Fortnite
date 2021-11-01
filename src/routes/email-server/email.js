@@ -28,5 +28,5 @@ exports.sendEmail = function (email, data, name) {
 
     });
 
-  })
+  }).catch((error) => { console.log(error)});
 }
