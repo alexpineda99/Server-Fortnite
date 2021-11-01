@@ -91,9 +91,7 @@ module.exports.registerUser = function (req, res) {
         } 
         
         else {
-            res.send({
-                msg: "test"
-            })
+            console.log("registro aca")
         // emailSender.sendEmail(email, hashed, name)
         // .then(data => {
         //     if (data === null || data === undefined) {
