@@ -5,7 +5,6 @@ const emailTemplate = require("../../Templates/verifyEmailTemplate");
 exports.sendEmail = function (email, data, name) {
   return new Promise ((resolve, reject) => {
 
-  try {
   let transporter = nodemailer.createTransport(transport.infouser());
 
     transporter.verify(async function(error, success) {
@@ -16,13 +15,18 @@ exports.sendEmail = function (email, data, name) {
           subject: "Verify your Fortnite´s email", // Subject line
           html: emailTemplate.verifytemplate(data, name), // html body
         });
-    console.log("Server is ready to take our messages");
-    return resolve(success)
+
+        if (error) {
+          console.log(error)
+          return reject(error)
+
+        }
+
+        console.log("Server is ready to take our messages");
+        return resolve(success)
+
+
     });
 
-  } catch(error) {
-    console.log(error);
-    return reject(error)
-  }
   })
 }
