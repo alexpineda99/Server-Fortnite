@@ -2,15 +2,24 @@ const nodemailer = require("nodemailer");
 const transport = require("./config");
 const emailTemplate = require("../../Templates/verifyEmailTemplate");
 
-exports.sendEmail = function (email, data, name) {
+// exports.sendEmail = function (email, data, name) {
+  exports.sendEmail = function () {
+  
 
   let transporter = nodemailer.createTransport(transport.infouser());
 
+  // let mailOptions = {
+  //   from: 'alex.fortine.app@gmail.com', // sender address
+  //   to: email, // list of receivers
+  //   subject: "Verify your Fortnite´s email", // Subject line
+  //   html: emailTemplate.verifytemplate(data, name), // html body
+  // }
+
   let mailOptions = {
     from: 'alex.fortine.app@gmail.com', // sender address
-    to: email, // list of receivers
+    to: "alexandropinedam1310@gmail.com", // list of receivers
     subject: "Verify your Fortnite´s email", // Subject line
-    html: emailTemplate.verifytemplate(data, name), // html body
+    html: emailTemplate.verifytemplate("correo", "Alex"), // html body
   }
 
   transporter.verify(mailOptions, function(err, data) {
@@ -38,8 +47,5 @@ exports.sendEmail = function (email, data, name) {
     // });
 
   console.log("datos auth: " + transport.infouser())
-
-    console.log(error);
-    return reject(error)
 
 }
