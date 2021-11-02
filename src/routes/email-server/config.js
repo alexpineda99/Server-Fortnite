@@ -4,13 +4,14 @@ const nodemailer = require("nodemailer");
 exports.infouser = function () {
   // create reusable transporter object using the default SMTP transport
   let transporter = {
-    host: "smtp.gmail.com",
-    port: 465,
-    service: "gmail",
+    host: 'smtp.gmail.com',
     auth: {
       user: "alex.fortine.app@gmail.com", // generated ethereal user
-      pass: "alexfortnite99", // generated ethereal password
+      pass: "alexfortnite99",
     },
+    tls:{
+      rejectUnauthorized:false
+    }
   }
  
     return transporter;
