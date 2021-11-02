@@ -40,31 +40,31 @@ app.get("/verify/:id", verification.verifyinfo);
 //   });
 // app.get("/api", middle.authHeader);
 app.get("/test", (req, res) => {
-//   console.log("test")
-//   let transporter = nodemailer.createTransport({
-//     host: 'smtp.gmail.com',
-//     port: 587,
-//     secure: false, // true for 465, false for other ports
-//     auth: {
-//       user: "alex.fortine.app@gmail.com", // generated ethereal user
-//       pass: "alexfortnite99",
-//     },
-//     tls:{
-//       rejectUnauthorized:false
-//     }
-//   });
-//   let mailOptions = {
-//     from: '"Nodemailer Contact" alex.fortine.app@gmail.com', // sender address
-//     to: 'alexandropinedam1310@gmail.com', // list of receivers
-//     subject: 'test mail', // Subject line
-//     text: 'Hello world?', // plain text body
-//     html: "<h1> test subject </h1>" // html body
-// };
-// transporter.sendMail(mailOptions, (error, info) => {
-//   if (error) {
-//       return console.log(error);
-//   }
-// });
+  console.log("test")
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: "alex.fortine.app@gmail.com", // generated ethereal user
+      pass: "alexfortnite99",
+    },
+    tls:{
+      rejectUnauthorized:false
+    }
+  });
+  let mailOptions = {
+    from: '"Nodemailer Contact" alex.fortine.app@gmail.com', // sender address
+    to: 'alexandropinedam1310@gmail.com', // list of receivers
+    subject: 'test mail', // Subject line
+    text: 'Hello world?', // plain text body
+    html: "<h1> test subject </h1>" // html body
+};
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+      return console.log(error);
+  }
+});
   res.json({ message: "Hello from server!" });
   // res.status(301).redirect('http://localhost:3000/');
 });
