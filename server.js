@@ -40,6 +40,7 @@ app.get("/verify/:id", verification.verifyinfo);
 //   });
 // app.get("/api", middle.authHeader);
 app.get("/test", (req, res) => {
+  console.log("test")
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
