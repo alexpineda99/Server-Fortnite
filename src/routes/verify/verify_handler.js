@@ -8,9 +8,10 @@ module.exports.verifyinfo = function (req, res, next) {
     .then(data=> {
         console.log(data);
         res.send({
-            msg: "bien",
+            msg: "User verified succesfully",
             data: data
         })
+        res.redirect("/login")
     })
     .catch(err=> {
         console.log(err);

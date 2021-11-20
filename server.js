@@ -35,14 +35,15 @@ app.get("/verify/:id", verification.verifyinfo);
 //TEST ROUTES
 
 // app.get("/send", emailsender.sendEmail);
-// app.get("/api", (req, res) => {
-//     res.json({ message: "Hello from server!" });
-//   });
+app.get("/redirect", (req, res) => {
+    res.json({ message: "Hello redirection!" });
+  });
 // app.get("/api", middle.authHeader);
 app.get("/test", (req, res) => {
   console.log("test")
-  res.json({ message: "Hello from server!" });
+  // res.json({ message: "Hello from server!" });
   // res.status(301).redirect('http://localhost:3000/');
+  res.redirect("/redirect")
 });
 
 
