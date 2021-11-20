@@ -7,7 +7,7 @@ module.exports.verifyinfo = function (req, res, next) {
     verify.verifyEmail(id)
     .then(data=> {
         console.log(data);
-        res.redirect("/login")
+        res.redirect("https://alex-fortnite.netlify.app/signin")
         // res.send({
         //     msg: "User verified succesfully",
         //     data: data
