@@ -7,11 +7,12 @@ module.exports.verifyinfo = function (req, res, next) {
     verify.verifyEmail(id)
     .then(data=> {
         console.log(data);
-        res.send({
-            msg: "User verified succesfully",
-            data: data
-        })
         res.redirect("/login")
+        // res.send({
+        //     msg: "User verified succesfully",
+        //     data: data
+        // })
+
     })
     .catch(err=> {
         console.log(err);
