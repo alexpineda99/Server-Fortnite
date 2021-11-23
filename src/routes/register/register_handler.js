@@ -61,25 +61,25 @@ module.exports.dataValid = function (req, res, next) {
     //   }
 
       //Pass validation
-      else if (pass.length === 0) {
+      else if (password.length === 0) {
         return res.send({
             success: false,
             msg: 'Password field required'
         })
       }
-    //   else if (pass.length < 8 && pass.length > 16) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Your password must be between 8 and 16 characters"
-    //     })
+      else if (password.length < 8 && password.length > 16) {
+        return res.send({
+            success: false,
+            msg: "Your password must be between 8 and 16 characters"
+        })
         
-    //   }
-    //   else if (!regPass.test(pass)) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Your password must have: At least one digit. At least one lowercase character. At least one uppercase character. At least one special character. At least 8 characters"
-    //     })
-    //   }
+      }
+      else if (!regPass.test(password)) {
+        return res.send({
+            success: false,
+            msg: "Your password must have: At least one digit. At least one lowercase character. At least one uppercase character. At least one special character. At least 8 characters"
+        })
+      }
 
     // if (regLetter.test(name)) {
     //     return res.send({
