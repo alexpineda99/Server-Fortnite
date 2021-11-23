@@ -150,7 +150,7 @@ module.exports.registerUser = function (req, res) {
 
         console.log(err);
         res.send({
-            msg: err
+            msg: "Error en registro" + err
         })
     })
     }
@@ -159,7 +159,7 @@ module.exports.registerUser = function (req, res) {
         console.log(err);
         res.send({
             success: false,
-            msg: err
+            msg: "Error en el servidor" + err
         })
     })
     // register.register(name, country, region, phone, email, password)
