@@ -8,48 +8,83 @@ module.exports.dataValid = function (req, res, next) {
     let regLetter = /^[a-zA-ZñÑáÁéÉíÍóÓúÚ]*$/i; // regular expression only letters
     let regPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,16}$/; // regular expression password
     let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/; // regular expression email
+    let regPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
 
-    if (!name) {
+    if (name.length === 0) {
         return res.send({
             success: false,
             msg: "Name field is required"
         })
-    }
+      }
+      else if (!regLetter.test(name)) {
+        return res.send({
+            success: false,
+            msg: "Name field requires only letters"
+        })
+      }
+      else if (name.length >= 3) {
+        return res.send({
+            success: false,
+            msg: "Your name must be at least 3 characters"
+        })
+      }
+      //Email validation
+      else if (email.length === 0) {
+        return res.send({
+            success: false,
+            msg: "Email field required"
+        })
+      }
+      else if (!regEmail.test(email)) {
+        return res.send({
+            success: false,
+            msg: "Please enter a valid email address"
+        })
+      }
+      //Region validation
+      else if (region.length === 0) {
+        return res.send({
+            success: false,
+            msg: "Region field required"
+        })
+      }
+      //Phone validation
+      else if (phone.length === 0) {
+        return res.send({
+            success: false,
+            msg: "Phone field required"
+        })
+      }
+    //   else if (!regPhone.test(phone)) {
+    //     setmsg("Please enter a valid phone number");
+    //     setLoading(false);
+    //   }
 
-    // if (!country) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Country field is required"
-    //     })
-    // }
-
-    // if (!region) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Region field is required"
-    //     })
-    // }
-
-    // if (!phone) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Phone field is required"
-    //     })
-    // }
-
-    // if (!email) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Email field is required"
-    //     })
-    // }
-
-    // if (!password) {
-    //     return res.send({
-    //         success: false,
-    //         msg: "Password field is required"
-    //     })
-    // }
+      //Pass validation
+      else if (pass.length === 0) {
+        return res.send({
+            success: false,
+            msg: ''
+        })
+      }
+      else if (pass.length >= 8 && pass.length <= 16) {
+        return res.send({
+            success: false,
+            msg: "Your name must be between 8 and 16 characters"
+        })
+        
+      }
+      else if (!regPass.test(pass)) {
+        return res.send({
+            success: false,
+            msg: ` Your password must have:
+            At least one digit
+            At least one lowercase character
+            At least one uppercase character
+            At least one special character
+            At least 8 characters`
+        })
+      }
 
     // if (regLetter.test(name)) {
     //     return res.send({

@@ -29,15 +29,11 @@ app.post("/login", login.dataValid, login.loginUser);
 app.post("/verify", verification.verifyinfo);
 app.get("/challenges", middle.authHeader, middle.validSign, challenges.challenges);
 app.get("/item/:id", middle.authHeader, middle.validSign, item.Itemparams);
-app.get("/item/:id", item.Itemparams);
 app.get("/verify/:id", verification.verifyinfo);
 
 //TEST ROUTES
 
 // app.get("/send", emailsender.sendEmail);
-app.get("/redirect", (req, res) => {
-    res.json({ message: "Hello redirection!" });
-  });
 // app.get("/api", middle.authHeader);
 app.get("/test", (req, res) => {
   console.log("test")
