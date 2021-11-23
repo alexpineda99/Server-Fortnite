@@ -74,12 +74,12 @@ module.exports.dataValid = function (req, res, next) {
         })
         
       }
-      else if (!regPass.test(pass)) {
-        return res.send({
-            success: false,
-            msg: "Your password must have: At least one digit. At least one lowercase character. At least one uppercase character. At least one special character. At least 8 characters"
-        })
-      }
+    //   else if (!regPass.test(pass)) {
+    //     return res.send({
+    //         success: false,
+    //         msg: "Your password must have: At least one digit. At least one lowercase character. At least one uppercase character. At least one special character. At least 8 characters"
+    //     })
+    //   }
 
     // if (regLetter.test(name)) {
     //     return res.send({
