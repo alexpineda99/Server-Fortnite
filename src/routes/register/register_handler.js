@@ -64,7 +64,7 @@ module.exports.dataValid = function (req, res, next) {
       else if (pass.length === 0) {
         return res.send({
             success: false,
-            msg: ''
+            msg: 'Password field required'
         })
       }
       else if (pass.length < 8 && pass.length > 16) {
