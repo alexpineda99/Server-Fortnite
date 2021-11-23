@@ -22,10 +22,10 @@ module.exports.dataValid = function (req, res, next) {
             msg: "Name field requires only letters"
         })
       }
-      else if (name.length < 3) {
+      else if (name.length < 3 && name.length > 26) {
         return res.send({
             success: false,
-            msg: "Your name must be at least 3 characters"
+            msg: "Your name must be at least 3 characters and no more than 25"
         })
       }
       //Email validation
