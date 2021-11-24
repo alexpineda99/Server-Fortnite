@@ -6,7 +6,7 @@ module.exports.dataValid = function (req, res, next) {
     const {name, country, region, phone, email, password} = req.body;
 
     let regLetter = /^[a-zA-Z\s]*$/; // regular expression only letters
-    let regPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/; // regular expression password
+    let regPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-_.]).{8,}$/; // regular expression password
     let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/; // regular expression email
     let regPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
 
@@ -94,7 +94,7 @@ module.exports.dataValid = function (req, res, next) {
 module.exports.registerUser = function (req, res) {
     const {name, country, region, phone, email, password} = req.body;
 
-    const datauser = name+country+region+phone+email+password;
+    const datauser = name+country+region;
 
     console.log(name, country, region, phone, email, password);
 
