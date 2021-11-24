@@ -1,14 +1,10 @@
 const jwt = require('jsonwebtoken');
 const _sign = "wSR85tGXgE2gdhEndMaFTIS7u16JTcQk";
 
-exports.verifyEmail = function () {
-    
-}
-
 exports.authHeader = function(req, res, next) {
     const token = req.headers['auth'];
     
-    if (token == "null" || token === undefined) {
+    if (token === null || token === undefined) {
         console.log("Token not defined");
         return res.status(401).send({
             msg: "Not authorizated",
