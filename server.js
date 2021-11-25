@@ -27,7 +27,7 @@ const verification = require('./src/routes/verify');
 app.post("/register", register.dataValid, register.registerUser, emailsender.sendEmail);
 app.post("/login", login.dataValid, login.loginUser);
 app.post("/verify", verification.verifyinfo);
-app.get("/challenges", challenges.challenges);
+app.get("/challenges", middle.authHeader, middle.validSign, challenges.challenges);
 app.get("/item/:id", middle.authHeader, middle.validSign, item.Itemparams);
 app.get("/verify/:id", verification.verifyinfo);
 
